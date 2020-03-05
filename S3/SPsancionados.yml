@@ -360,7 +360,6 @@ components:
           properties:
             fechaCaptura:
               type: string
-              format: date-time
               enum:
                 - asc
                 - desc
