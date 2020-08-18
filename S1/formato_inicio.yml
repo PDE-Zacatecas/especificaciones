@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info: 
-  version: "2.1"
+  version: "2.0"
   title: API de las declaraciones de los servidores públicos
 paths:
   /v2/declaraciones:
@@ -109,20 +109,20 @@ components:
             pageSize:
               type: integer
               minimum: 1
-              description: Tamaño de registros mostrados por página. Por defecto son diez.
+              description: "Tamaño de registros mostrados por página. Por defecto son diez."
               example: 100
             page:
               type: integer
               minimum: 1
-              description: Número de página actual
+              description: "Número de página actual"
               example: 20
             totalRows:
               type: integer
-              description: Total de registros
+              description: "Total de registros"
               example: 30
             hasNextPage:
               type: boolean
-              description: Indica si existe otra página
+              description: "Indica si existe otra página"
               example: true 
         results:
           type: array
@@ -451,7 +451,7 @@ components:
       example: asc
     datosGenerales:
         type: object
-        required: 
+        required:
           - nombre
           - primerApellido
         properties:
@@ -470,7 +470,7 @@ components:
           curp:
             type: string
             maxLength: 18
-            description: Escribir los dieciocho caracteres como la emitió la Secretaría de Gobernación. En caso de no contar con ella, podrá consultarla en la página de la Secretaría de Gobernación, en el apartado de Trámites.
+            description: "Escribir los dieciocho caracteres como la emitió la Secretaría de Gobernación. En caso de no contar con ella, podrá consultarla en la página de la Secretaría de Gobernación, en el apartado de Trámites."
             example: 'BADD110313HCMLNS09'
           rfc:
             type: object
@@ -490,22 +490,22 @@ components:
             properties:
               institucional:
                 type: string
-                description: Escribir la dirección de correo electrónico que le haya sido asignada por el Ente Público en el que labora.
+                description: "Escribir la dirección de correo electrónico que le haya sido asignada por el Ente Público en el que labora."
                 example: 'pedro.perez@dependencia.gob.mx'
               personal:
                 type: string
-                description: Escribir la dirección de correo electrónico que el Declarante haya generado para uso personal. En caso de no contar con él, deberá generar una cuenta.
+                description: "Escribir la dirección de correo electrónico que el Declarante haya generado para uso personal. En caso de no contar con él, deberá generar una cuenta."
                 example: 'pedro.perez@xmail.mx'
           telefono:
             type: object
             properties:
               casa:
                 type: string
-                description: Escribir el número telefónico de su domicilio, incluir lada.
+                description: "Escribir el número telefónico de su domicilio, incluir lada."
                 example: '5556655555'
               celularPersonal:
                 type: string
-                description: Escribir los diez dígitos de su número celular.
+                description: "Escribir los diez dígitos de su número celular."
                 example: '5555778833'
           situacionPersonalEstadoCivil:
             type: object
@@ -526,7 +526,7 @@ components:
                     * `CAS` - CASADO (A)
                     * `DIV` - DIVORCIADO (A)
                     * `VIU` - VIUDO (A)
-                    * `CON` - CONCUBINA/CONCUBINARIO/UNIÓN LIBRE
+                    * `CON` - CONCUBINA/CONCUBINARIO/UNIÓN LIBRE
                     * `SCO` - SOCIEDAD DE CONVIVENCIA
                 example: 'CAS'
               valor:
@@ -536,9 +536,9 @@ components:
                 - CASADO (A)
                 - DIVORCIADO (A)
                 - VIUDO (A)
-                - CONCUBINA/CONCUBINARIO/UNIÓN LIBRE
+                - CONCUBINA/CONCUBINARIO/UNIÓN LIBRE
                 - SOCIEDAD DE CONVIVENCIA
-                description: 'Es la condición del Declarante en función de si tiene o no Pareja, según sus circunstancias o situación legal respecto a ello.'
+                description: 'Es la condición del Declarante en función de si tiene o no pareja, según sus circunstancias o situación legal respecto a ello.'
                 example: 'CASADO (A)'
           regimenMatrimonial:
             type: object
@@ -557,16 +557,14 @@ components:
                 example: 'SBI'
               valor:
                 type: string
-                description: 'En su caso, especificar, sociedad conyugal, separación de bienes u otro/especifique.'
+                description: 'En su caso, especificar, sociedad conyugal, separación de bienes u otro/especifique.'
                 example: 'Separación de Bienes'
           paisNacimiento:
             $ref: '#/components/schemas/pais'
           nacionalidad:
             $ref: '#/components/schemas/pais'
           aclaracionesObservaciones:
-            type: string
-            description: En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.
-            example: 'Observaciones'
+            $ref: '#/components/schemas/aclaracionesObservaciones'
     domicilioDeclarante:
         type: object
         properties:
@@ -575,12 +573,10 @@ components:
           domicilioExtranjero:
             $ref: '#/components/schemas/domicilioExtranjero'
           aclaracionesObservaciones:
-            type: string
-            description:  En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.
-            example: 'Observaciones'
+            $ref: '#/components/schemas/aclaracionesObservaciones'
     datosCurricularesDeclarante:
         type: object
-        required: 
+        required:
           - escolaridad
         properties:
           escolaridad:
@@ -592,7 +588,7 @@ components:
                   $ref: '#/components/schemas/tipoOperacion'
                 nivel:
                   type: object
-                  description: 'El Declarante deberá elegir alguna de las siguientes opciones: primaria, secundaria, bachillerato, carrera técnica o comercial, licenciatura, especialidad, maestría o doctorado.'
+                  description: 'El Declarante deberá elegir alguna de las siguientes opciones: primaria, secundaria, bachillerato, carrera técnica o comercial, licenciatura, especialidad, maestría o doctorado.'
                   properties:
                     clave:
                       type: string
@@ -611,10 +607,10 @@ components:
                         * `PRI` - PRIMARIA
                         * `SEC` - SECUNDARIA
                         * `BCH` - BACHILLERATO
-                        * `CTC` - CARRERA TÉCNICA O COMERCIAL
+                        * `CTC` - CARRERA TÉCNICA O COMERCIAL
                         * `LIC` - LICENCIATURA
                         * `ESP` - ESPECIALIDAD
-                        * `MAE` - MAESTRÍA
+                        * `MAE` - MAESTRÍA
                         * `DOC` - DOCTORADO
                     valor:
                       type: string
@@ -622,10 +618,10 @@ components:
                         - PRIMARIA
                         - SECUNDARIA
                         - BACHILLERATO
-                        - CARRERA TÉCNICA O COMERCIAL
+                        - CARRERA TÉCNICA O COMERCIAL
                         - LICENCIATURA
                         - ESPECIALIDAD
-                        - MAESTRÍA
+                        - MAESTRÍA
                         - DOCTORADO
                       example: DOCTORADO
                 institucionEducativa:
@@ -634,13 +630,13 @@ components:
                     nombre:
                       type: string
                       description: Institución educativa. Escribir el nombre de la institución o escuela donde se realizaron los estudios.
-                      example: 'Institúto Politécnico Nacional'
+                      example: 'Instituto Politécnico Nacional'
                     ubicacion:
                       type: string
                       enum:
                       - MX
                       - EX
-                      description: Señalar si se ubica en México o en el extranjero.
+                      description: "Señalar si se ubica en México o en el extranjero."
                       example: 'MX'
                 carreraAreaConocimiento:
                   type: string
@@ -664,15 +660,13 @@ components:
                 fechaObtencion:
                   type: string
                   format: date
-                  description: Señalar la fecha que indica el documento obtenido.
+                  description: "Señalar la fecha que indica el documento obtenido."
                   example: '2017-11-29'
-          aclaracionesObservaciones: 
-            type: string
-            description: En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.
-            example: 'Observaciones'
+          aclaracionesObservaciones:
+            $ref: '#/components/schemas/aclaracionesObservaciones'
     datosEmpleoCargoComision:
       type: object
-      required: 
+      required:
         - nombreEntePublico
         - empleoCargoComision
       properties:
@@ -684,54 +678,52 @@ components:
           $ref: '#/components/schemas/ambitoPublico'
         nombreEntePublico:
           type: string
-          description: Señalar el Ente Público al cual se encuentra adscrita la plaza.
+          description: "Señalar el Ente Público al cual se encuentra adscrita la plaza."
           example: 'Instituto Federal de Telecomunicaciones'
         areaAdscripcion:
           type: string
-          description: Especificar el nombre de la Unidad Administrativa u homóloga superior inmediata de su adscripción. (Superior jerárquico).
-          example: 'Unidad del Espectro Radioelectrico'
+          description: "Especificar el nombre de la Unidad Administrativa u homóloga superior inmediata de su adscripción. (Superior jerárquico)."
+          example: 'Unidad del Espectro Radioeléctrico'
         empleoCargoComision:
           type: string
-          description: Señalar el nombre del empleo, cargo o comisión que aparece en su recibo de nómina, nombramiento, contrato u oficio de comisión.
+          description: "Señalar el nombre del empleo, cargo o comisión que aparece en su recibo de nómina, nombramiento, contrato u oficio de comisión."
           example: 'Director del Sistema Nacional de Infraestructura'
         contratadoPorHonorarios:
           type: boolean
-          description: Indicar sí o no (true o false)
-          example: false 
+          description: "Indicar sí o no (true o false)"
+          example: false
         nivelEmpleoCargoComision:
           type: string
-          description: Elegir conforme a lo que señala su recibo de pago, en caso de no encontrarse en la lista desplegable, señalar otro y especificar.
+          description: "Elegir conforme a lo que señala su recibo de pago, en caso de no encontrarse en la lista desplegable, señalar otro y especificar."
           example: 'L31'
         funcionPrincipal:
           type: string
-          description: Señalar cuál es la función o actividad principal que desempeña en su empleo, cargo o comisión.
+          description: "Señalar cuál es la función o actividad principal que desempeña en su empleo, cargo o comisión."
           example: 'Coordinar, Dirigir, etc.'
         fechaTomaPosesion:
           type: string
-          description: Señalar la fecha en que inició/concluyó el encargo.
+          description: "Señalar la fecha en que inició/concluyó el encargo."
           example: '2010-11-29'
         telefonoOficina:
           type: object
           properties:
             telefono:
               type: string
-              description: Proporcionar el teléfono laboral y extensión según corresponda.
+              description: "Proporcionar el telefono laboral y extensión según corresponda."
               example: '5522221212'
             extension:
               type: string
-              description: Proporcionar el teléfono laboral y extensión según corresponda.
+              description: "Proporcionar el telefono laboral y extensión según corresponda."
               example: '1010'
         domicilioMexico:
               $ref: '#/components/schemas/domicilioMexico'
         domicilioExtranjero:
           $ref: '#/components/schemas/domicilioExtranjero'
         aclaracionesObservaciones:
-          type: string
-          description: En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.
-          example: 'Observaciones'
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     experienciaLaboral:
         type: object
-        required: 
+        required:
           - ninguno
         properties:
           ninguno:
@@ -753,35 +745,35 @@ components:
                       $ref: '#/components/schemas/ambitoPublico'
                     nombreEntePublico:
                       type: string
-                      description: Señalar el Ente Público al cual se encuentra adscrita la plaza.
+                      description: "Señalar el Ente Público al cual se encuentra adscrita la plaza."
                       example: 'Comisión Federal de Electricidad'
                     areaAdscripcion:
                       type: string
-                      description: Especificar el nombre de la Unidad Administrativa u homóloga superior inmediata de su adscripción. (Superior jerárquico).
+                      description: "Especificar el nombre de la Unidad Administrativa u homóloga superior inmediata de su adscripción. (Superior jerárquico)."
                       example: 'Unidad de Concesiones y Servicios'
                     empleoCargoComision:
                       type: string
-                      description: Señalar el nombre del empleo, cargo o comisión que aparece en su recibo de nómina, nombramiento, contrato u oficio de comisión.
+                      description: "Señalar el nombre del empleo, cargo o comisión que aparece en su recibo de nómina, nombramiento, contrato u oficio de comisión."
                       example: 'Titular de Unidad'
                     funcionPrincipal:
                       type: string
-                      description: Señalar cual es la función o actividad principal que desempeñó.
+                      description: Señalar cuál es la función o actividad principal que desempeña.
                       example: 'Dirigir, coordinar'
                     fechaIngreso:
                       type: string
                       format: date
-                      description: Señalar la fecha en que inició empleo, cargo o comisión.
+                      description: Señalar la fecha en que inició empleo, cargo o comisión.
                       example: '2007-01-01'
                     fechaEgreso:
                       type: string
-                      description: Señalar la fecha en que concluyó empleo, cargo o comisión.
+                      description: Señalar la fecha en que concluyó empleo, cargo o comisión.
                       example: '2010-01-01'
                     ubicacion:
                       type: string
                       enum:
                       - MX
                       - EX
-                      description: Señalar en México o en el extranjero.
+                      description: Señalar en México o en el extranjero.
                       example: 'MX'
                 # Sector privado/otro
                 - type: object
@@ -792,42 +784,40 @@ components:
                       $ref: '#/components/schemas/ambitoSector'
                     nombreEmpresaSociedadAsociacion:
                       type: string
-                      description: Proporcionar el nombre de la empresa, sociedad o asociación en la que laboró.
+                      description: Proporcionar el nombre de la empresa, sociedad o asociación en la que laboro.
                       example: 'Patito SA de CV'
                     rfc:
                       type: string
-                      description: Proporcionar los 12 dígitos de la empresa en que laboró.
+                      description: Proporcionar los 12 dígitos de la empresa en que laboro.
                       example: 'IFZ110924CX1'
                     area:
                       type: string
-                      description: Proporcionar el nombre del área en la cual estaba adscrito(A).
+                      description: Proporcionar el nombre del área en la cual estaba adscrito(A).
                       example: 'Recursos Humanos'
                     puesto:
                       type: string
-                      description: Proporcionar el nombre del puesto que desempeñó.
+                      description: Proporcionar el nombre del puesto que desempeno.
                       example: 'Reclutador'
                     sector:
-                      $ref: '#/components/schemas/sector' 
+                      $ref: '#/components/schemas/sector'
                     fechaIngreso:
                       type: string
                       format: date
-                      description: Señalar la fecha en que inició empleo, cargo o comisión. 
+                      description: Señalar la fecha en que inició empleo, cargo o comisión.
                       example: '2005-07-07'
                     fechaEgreso:
                       type: string
-                      description: Señalar la fecha en que concluyó empleo, cargo o comisión.
+                      description: Señalar la fecha en que concluyó empleo, cargo o comisión.
                       example: '2012-12-31'
                     ubicacion:
                       type: string
-                      enum: 
+                      enum:
                       - MX
                       - EX
                       example: 'MX'
-                      description: Señalar si se ubica en México o en el extranjero
+                      description: Señalar si se ubica en Mexico o en el extranjero
           aclaracionesObservaciones:
-            type: string
-            description: En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.
-            example: 'Observaciones'
+            $ref: '#/components/schemas/aclaracionesObservaciones'
     datosPareja:
         type: object
         properties:
@@ -849,37 +839,37 @@ components:
             example: 'Gomez'
           fechaNacimiento:
             type: string
-            description: Señalar la fecha de nacimiento de la Pareja
+            description: Señalar la fecha de nacimiento de la Pareja
             example: '1990-12-01'
           rfc:
             type: string
-            description: Escribir los diez caracteres básicos con los tres caracteres de la homoclave.
+            description: Escribir los diez caracteres básicos con los tres caracteres de la homoclave.
             example: 'MOGO901201B21'
           relacionConDeclarante:
             type: string
-            description: 'Seleccionar el tipo de relación entre las siguientes opciones: cónyuge, concubina/concubinario/unión libre o sociedad de convivencia.'
-            enum: 
+            description: 'Seleccionar el tipo de relación entre las siguientes opciones: cónyuge, concubina/concubinario/unión libre o sociedad de convivencia.'
+            enum:
               - CONYUGE
               - CONCUBINA_CONCUBINARIO_UNION_LIBRE
               - SOCIEDAD_DE_CONVIVENCIA
-            example: 'Cónyuge'
-          ciudadanoExtranjero: 
+            example: 'CONYUGE'
+          ciudadanoExtranjero:
             type: boolean
-            description:  'Deberá indicar sí o no (true/false), según el caso.'
+            description:  'Deberá indicar si o no (true/false), según el caso.'
             example: false
           curp:
             type: string
-            description: Escribir los dieciocho caracteres como la emitió la Secretaría de Gobernación.
+            description: Escribir los dieciocho caracteres como la emitió la Secretaría de Gobernación.
             example: 'MOGO901201HVZRVR03'
           esDependienteEconomico:
             type: boolean
-            description: Si la manutención depende principalmente de los ingresos de la persona servidora pública Declarante, señalará sí, en caso contrario señalará no.
+            description: Si la manutención depende principalmente de los ingresos de la persona servidora pública Declarante, señalará si, en caso contrario señalará no.
             example: true
-          habitaDomicilioDeclarante: 
+          habitaDomicilioDeclarante:
             type: boolean
-            description: Indicar sí o no, la Pareja vive en el domicilio del Declarante.
+            description: Indicar si o no, la Pareja vive en el domicilio del Declarante.
             example: true
-          lugarDondeReside: 
+          lugarDondeReside:
             $ref: '#/components/schemas/lugarDondeReside'
           domicilioMexico:
             $ref: '#/components/schemas/domicilioMexico'
@@ -896,47 +886,47 @@ components:
                 $ref: '#/components/schemas/ambitoPublico'
               nombreEntePublico:
                 type: string
-                description: Señalar el Ente Público al cual se encuentra adscrita la plaza.
+                description: Señalar el Ente Público al cual se encuentra adscrita la plaza.
                 example: 'Secretaría de Comunicaciones y Transportes'
               areaAdscripcion:
                 type: string
-                description: |- 
-                  Especificar el nombre de la Unidad Administrativa u homóloga superior inmediata en la que está adscrito. (Superior jerárquico).
+                description: |-
+                  Especificar el nombre de la Unidad Administrativa u homóloga superior inmediata en la que está adscrito. (Superior jerárquico).
                 example: 'Unidad de Asuntos Jurídicos'
               empleoCargoComision:
                 type: string
-                description: Señalar el nombre del empleo, cargo o comisión que se establece en su recibo de nómina, nombramiento, contrato u oficio de comisión.
+                description: Señalar el nombre del empleo, cargo o comisión que se establece en su recibo de nómina, nombramiento, contrato u oficio de comisión.
                 example: 'Titular de unidad'
               funcionPrincipal:
                 type: string
-                description: Señalar cual es la función o actividad principal que desempeña su Pareja.
+                description: Señalar cuál es la función o actividad principal que desempeña su Pareja.
                 example: 'Dirigir, coordinar, etc.'
               salarioMensualNeto:
                 $ref: '#/components/schemas/monto'
               fechaIngreso:
                 type: string
                 format: date
-                description: Señalar la fecha en que inició empleo, cargo o comisión.
+                description: Señalar la fecha en que inició empleo, cargo o comisión.
                 example: '2010-01-01'
           actividadLaboralSectorPrivadoOtro:
             type: object
             properties:
               nombreEmpresaSociedadAsociacion:
                 type: string
-                description: Proporcionar el nombre de la empresa, sociedad o asociación en la que labora.
+                description: Proporcionar el nombre de la empresa, sociedad o asociación en la que labora.
                 example: 'Patito SA de CV'
               empleoCargoComision:
                 type: string
-                description: Proporcionar el nombre del puesto que desempeña.
+                description: Proporcionar el nombre del puesto que desempeña.
                 example: 'Reclutador'
               rfc:
                 type: string
-                description: Proporcionar los 12 dígitos de la empresa en que labora su cónyuge, concubina/concubinario o sociedad de convivencia.
+                description: Proporcionar los 12 dígitos de la empresa en que labora su cónyuge, concubina/concubinario o sociedad de convivencia.
                 example: 'IFD130924CX1'
               fechaIngreso:
                 type: string
                 format: date
-                description: Señalar la fecha en que inició empleo, cargo o comisión.
+                description: Señalar la fecha en que inició empleo, cargo o comisión.
                 example: '2011-01-01'
               sector:
                  $ref: '#/components/schemas/sector'
@@ -944,12 +934,10 @@ components:
                 $ref: '#/components/schemas/monto'
               proveedorContratistaGobierno:
                 type: boolean
-                description: Señalar sí o no, la Pareja vende o presta algún servicio al gobierno.
+                description: Señalar si o no, la Pareja vende o presta algún servicio al gobierno.
                 example: true
           aclaracionesObservaciones:
-            type: string
-            description: En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.
-            example: 'Observaciones'
+            $ref: '#/components/schemas/aclaracionesObservaciones'
     #FIN Mario
     ##ISELA
     datosDependientesEconomicos:
@@ -957,7 +945,7 @@ components:
         Proporcionar los datos de los dependientes económicos, que son aquellas personas, familiares o no, cuya manutención depende principalmente de los ingresos del Declarante.
       type: object
       properties:
-        ninguno: 
+        ninguno:
           $ref: '#/components/schemas/ninguno'
         dependienteEconomico:
           description: |-
@@ -982,13 +970,13 @@ components:
                 type: string
                 description: |-
                   Segundo apellido del dependiente económico
-                example: Ana  
+                example: Ana
               fechaNacimiento:
                 type: string
                 format: date
                 description: |-
                   Formato de fechas ISO 8601 con notación yyyy-mm-dd.
-                example: '2010-07-26'  
+                example: '2010-07-26'
               rfc:
                 type: string
                 description: 'Escribir los diez caracteres básicos con los tres caracteres de la homoclave'
@@ -1018,7 +1006,7 @@ components:
                   - MEXICO
                   - EXTRANJERO
                   - SE_DESCONOCE
-                example: MEXICO  
+                example: MEXICO
               domicilioMexico:
                 $ref: '#/components/schemas/domicilioMexico'
               domicilioExtranjero:
@@ -1027,7 +1015,7 @@ components:
                 $ref: '#/components/schemas/actividadLaboral'
               actividadLaboralSectorPublico:
                 type: object
-                description: |- 
+                description: |-
                   Si el dependiente económico se encuentra trabajando actualmente en el sector público
                 properties:
                   nivelOrdenGobierno:
@@ -1036,18 +1024,18 @@ components:
                     $ref: '#/components/schemas/ambitoPublico'
                   nombreEntePublico:
                     type: string
-                    description: 'Ente Púbico al cual se encuentra adscrita la plaza'
+                    description: 'Ente Público al cual se encuentra adscrita la plaza'
                     example: 'INSTITUTO NACIONAL ELECTORAL'
                   areaAdscripcion:
                     type: string
-                    description: |- 
+                    description: |-
                       El nombre de la Unidad Administrativa u homóloga superior inmediata en la que está adscrito. (Superior jerárquico).
                     example: 'Dirección de recursos financieros'
                   empleoCargoComision:
                     type: string
-                    description: |- 
+                    description: |-
                       Nombre del empleo, cargo o comisión que se establece en su recibo de nómina, nombramiento, contrato u oficio de comisión
-                    example: 'Jefe de departamento de indicadores'  
+                    example: 'Jefe de departamento de indicadores'
                   funcionPrincipal:
                     type: string
                     example: 'Generar indicadores de desempeño'
@@ -1058,15 +1046,15 @@ components:
                     format: date
                     description: |-
                       Formato de fechas ISO 8601 con notación yyyy-mm-dd.
-                    example: '2010-07-26'   
+                    example: '2010-07-26'
               actividadLaboralSectorPrivadoOtro:
                 type: object
                 properties:
                   nombreEmpresaSociedadAsociacion:
                     type: string
-                    description: |- 
+                    description: |-
                       Nombre de la empresa, sociedad o asociación en la que labora.
-                    example: 'La empresa S.A'  
+                    example: 'La empresa S.A'
                   rfc:
                     type: string
                     description: 'Los 12 dígitos de la empresa en la que labora el dependiente económico'
@@ -1080,7 +1068,7 @@ components:
                     format: date
                     description: |-
                       Formato de fechas ISO 8601 con notación yyyy-mm-dd.
-                    example: '2010-07-26'  
+                    example: '2010-07-26'
                   salarioMensualNeto:
                     $ref: '#/components/schemas/monto'
               proveedorContratistaGobierno:
@@ -1088,14 +1076,12 @@ components:
                 description: 'Señala sí o no, el dependiente económico vende o presta algún servicio al gobierno'
                 example: false
               sector:
-                $ref: '#/components/schemas/sector'   
+                $ref: '#/components/schemas/sector'
         aclaracionesObservaciones:
-          type: string
-          description: 'Aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.'
-          example: 'Esta es una aclaración'
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     ingresos:
       type: object
-      required: 
+      required:
         - remuneracionMensualCargoPublico
         - ingresoMensualNetoDeclarante
         - totalIngresosMensualesNetos
@@ -1116,8 +1102,8 @@ components:
               items:
                 type: object
                 properties:
-                  remuneracion: 
-                    $ref: '#/components/schemas/monto'      
+                  remuneracion:
+                    $ref: '#/components/schemas/monto'
                   nombreRazonSocial:
                     type: string
                     description: 'Nombre, razón social o denominación del negocio, en el cual se lleva a cabo la actividad o alguna de las actividades antes mencionadas por la cual se genera el ingreso.'
@@ -1125,8 +1111,8 @@ components:
                   tipoNegocio:
                     type: string
                     description: 'Tipo de negocio por el cual obtuvo el ingreso.'
-                    example: 'Venta de productos'                 
-        actividadFinanciera:   
+                    example: 'Venta de productos'
+        actividadFinanciera:
           type: object
           properties:
             remuneracionTotal:
@@ -1136,11 +1122,11 @@ components:
               items:
                 type: object
                 properties:
-                  remuneracion: 
-                    $ref: '#/components/schemas/monto'      
+                  remuneracion:
+                    $ref: '#/components/schemas/monto'
                   tipoInstrumento:
-                    $ref: '#/components/schemas/tipoInstrumento'                
-        serviciosProfesionales:   
+                    $ref: '#/components/schemas/tipoInstrumento'
+        serviciosProfesionales:
           type: object
           properties:
             remuneracionTotal:
@@ -1150,13 +1136,13 @@ components:
               items:
                 type: object
                 properties:
-                  remuneracion: 
-                    $ref: '#/components/schemas/monto'  
+                  remuneracion:
+                    $ref: '#/components/schemas/monto'
                   tipoServicio:
                     type: string
-                    description: 'Tipo de servicio que otorga, el tipo de participación en los consejos o consultorías, así como el tipo de asesorías que llevo a cabo.'
-                    example: 'Instructor de cursos'   
-        otrosIngresos:   
+                    description: 'Tipo de servicio que otorga, el tipo de participación en los consejos o consultorías, así como el tipo de asesorías que llevó a cabo.'
+                    example: 'Instructor de cursos'
+        otrosIngresos:
           type: object
           properties:
             remuneracionTotal:
@@ -1166,25 +1152,23 @@ components:
               items:
                 type: object
                 properties:
-                  remuneracion: 
-                    $ref: '#/components/schemas/monto'  
+                  remuneracion:
+                    $ref: '#/components/schemas/monto'
                   tipoIngreso:
-                    type: string  
+                    type: string
                     description: 'Indicar si el ingreso derivó de arrendamiento, regalía, sorteos, concursos, donaciones, seguro de vida o algún otro concepto distinto no considerado en los rubros anteriores.'
-                    example: 'Sorteo' 
-        ingresoMensualNetoDeclarante:    
-          $ref: '#/components/schemas/monto'  
-        ingresoMensualNetoParejaDependiente:    
-          $ref: '#/components/schemas/monto'  
-        totalIngresosMensualesNetos:    
-          $ref: '#/components/schemas/monto'    
+                    example: 'Sorteo'
+        ingresoMensualNetoDeclarante:
+          $ref: '#/components/schemas/monto'
+        ingresoMensualNetoParejaDependiente:
+          $ref: '#/components/schemas/monto'
+        totalIngresosMensualesNetos:
+          $ref: '#/components/schemas/monto'
         aclaracionesObservaciones:
-          type: string
-          description: 'Aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.'
-          example: 'Esta es una aclaración'
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     actividadAnualAnterior:
       type: object
-      required: 
+      required:
         - servidorPublicoAnioAnterior
       properties:
         servidorPublicoAnioAnterior:
@@ -1196,13 +1180,13 @@ components:
           format: date
           description: |-
                   Formato de fechas ISO 8601 con notación yyyy-mm-dd.
-          example: '2010-07-26'  
+          example: '2010-07-26'
         fechaConclusion:
           type: string
           format: date
           description: |-
                   Formato de fechas ISO 8601 con notación yyyy-mm-dd.
-          example: '2010-07-26'   
+          example: '2010-07-26'
         remuneracionNetaCargoPublico:
           $ref: '#/components/schemas/monto'
         otrosIngresosTotal:
@@ -1217,8 +1201,8 @@ components:
               items:
                 type: object
                 properties:
-                  remuneracion: 
-                    $ref: '#/components/schemas/monto'      
+                  remuneracion:
+                    $ref: '#/components/schemas/monto'
                   nombreRazonSocial:
                     type: string
                     description: 'Nombre, razón social o denominación del negocio, en el cual se lleva a cabo la actividad o alguna de las actividades antes mencionadas por la cual se genera el ingreso.'
@@ -1226,8 +1210,8 @@ components:
                   tipoNegocio:
                     type: string
                     description: 'Tipo de negocio por el cual obtuvo el ingreso.'
-                    example: 'Venta de productos'                 
-        actividadFinanciera:   
+                    example: 'Venta de productos'
+        actividadFinanciera:
           type: object
           properties:
             remuneracionTotal:
@@ -1237,11 +1221,11 @@ components:
               items:
                 type: object
                 properties:
-                  remuneracion: 
-                    $ref: '#/components/schemas/monto'      
+                  remuneracion:
+                    $ref: '#/components/schemas/monto'
                   tipoInstrumento:
-                    $ref: '#/components/schemas/tipoInstrumento'                
-        serviciosProfesionales:   
+                    $ref: '#/components/schemas/tipoInstrumento'
+        serviciosProfesionales:
           type: object
           properties:
             remuneracionTotal:
@@ -1251,13 +1235,13 @@ components:
               items:
                 type: object
                 properties:
-                  remuneracion: 
-                    $ref: '#/components/schemas/monto'  
+                  remuneracion:
+                    $ref: '#/components/schemas/monto'
                   tipoServicio:
                     type: string
-                    description: 'Tipo de servicio que otorga, el tipo de participación en los consejos o consultorías, así como el tipo de asesorías que llevo a cabo.'
-                    example: 'Instructor de cursos'   
-        enajenacionBienes:   
+                    description: 'Tipo de servicio que otorga, el tipo de participación en los consejos o consultorías, así como el tipo de asesorías que llevó a cabo.'
+                    example: 'Instructor de cursos'
+        enajenacionBienes:
           type: object
           properties:
             remuneracionTotal:
@@ -1267,16 +1251,16 @@ components:
               items:
                 type: object
                 properties:
-                  remuneracion: 
-                    $ref: '#/components/schemas/monto'  
+                  remuneracion:
+                    $ref: '#/components/schemas/monto'
                   tipoBienEnajenado:
                     type: string
                     enum:
                       - MUEBLE
                       - INMUEBLE
                       - VEHICULO
-                    example: MUEBLE      
-        otrosIngresos:   
+                    example: MUEBLE
+        otrosIngresos:
           type: object
           properties:
             remuneracionTotal:
@@ -1286,28 +1270,26 @@ components:
               items:
                 type: object
                 properties:
-                  remuneracion: 
-                    $ref: '#/components/schemas/monto'  
+                  remuneracion:
+                    $ref: '#/components/schemas/monto'
                   tipoIngreso:
-                    type: string  
+                    type: string
                     description: 'Indicar si el ingreso derivó de arrendamiento, regalía, sorteos, concursos, donaciones, seguro de vida o algún otro concepto distinto no considerado en los rubros anteriores.'
-                    example: 'Sorteo' 
-        ingresoNetoAnualDeclarante:    
-          $ref: '#/components/schemas/monto'  
-        ingresoNetoAnualParejaDependiente:    
-          $ref: '#/components/schemas/monto'  
-        totalIngresosNetosAnuales:    
-          $ref: '#/components/schemas/monto'    
+                    example: 'Sorteo'
+        ingresoNetoAnualDeclarante:
+          $ref: '#/components/schemas/monto'
+        ingresoNetoAnualParejaDependiente:
+          $ref: '#/components/schemas/monto'
+        totalIngresosNetosAnuales:
+          $ref: '#/components/schemas/monto'
         aclaracionesObservaciones:
-          type: string
-          description: 'Aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.'
-          example: 'Esta es una aclaración'
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     bienesInmuebles:
       description: |-
         Reportar aquellos bienes que conforme a la normatividad aplicable se consideran inmuebles.
       type: object
       properties:
-        ninguno: 
+        ninguno:
           $ref: '#/components/schemas/ninguno'
         bienInmueble:
           description: |-
@@ -1317,7 +1299,7 @@ components:
             type: object
             properties:
               tipoOperacion:
-                $ref : '#/components/schemas/tipoOperacion'          
+                $ref : '#/components/schemas/tipoOperacion'
               tipoInmueble:
                 $ref: '#/components/schemas/tipoInmueble'
               titular:
@@ -1334,19 +1316,19 @@ components:
               tercero:
                 $ref: '#/components/schemas/tercero'
               transmisor:
-                $ref: '#/components/schemas/transmisor'  
+                $ref: '#/components/schemas/transmisor'
               formaAdquisicion:
-                $ref: '#/components/schemas/formaAdquisicion' 
+                $ref: '#/components/schemas/formaAdquisicion'
               formaPago:
                 $ref: '#/components/schemas/formaPago'
               valorAdquisicion:
                 $ref: '#/components/schemas/monto'
-              fechaAdquisicion: 
+              fechaAdquisicion:
                 type: string
                 format: date
                 description: |-
                         Formato de fechas ISO 8601 con notación yyyy-mm-dd.
-                example: '2010-07-26' 
+                example: '2010-07-26'
               datoIdentificacion:
                 type: string
                 description: 'Número de escritura pública, folio real o cualquier dato que lo identifique'
@@ -1359,22 +1341,20 @@ components:
                   - CONTRATO
                 example: ESCRITURA PÚBLICA
                 description: 'Indicar si es conforme a escritura pública, sentencia o contrato'
-              domicilioMexico:  
+              domicilioMexico:
                 $ref: '#/components/schemas/domicilioMexico'
-              domicilioExtranjero:  
+              domicilioExtranjero:
                 $ref: '#/components/schemas/domicilioExtranjero'
               motivoBaja:
                 $ref: '#/components/schemas/motivoBaja'
         aclaracionesObservaciones:
-          type: string
-          description: 'Aclaraciones u observaciones que se consideren pertinentes'
-          example: 'Esta es una aclaración'     
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     vehiculos:
-      description: |- 
+      description: |-
         Situación de los vehículos a la fecha de ingreso al empleo, cargo o comisión.
       type: object
       properties:
-        ninguno: 
+        ninguno:
           $ref: '#/components/schemas/ninguno'
         vehiculo:
           description: 'Datos del vehículo declarado'
@@ -1383,14 +1363,14 @@ components:
             type: object
             properties:
               tipoOperacion:
-                $ref : '#/components/schemas/tipoOperacion'         
+                $ref : '#/components/schemas/tipoOperacion'
               tipoVehiculo:
                 $ref: '#/components/schemas/tipoVehiculo'
               titular:
                 $ref: '#/components/schemas/titularBien'
               transmisor:
                   $ref: '#/components/schemas/transmisor'
-              marca: 
+              marca:
                 type: string
                 description: 'Marca'
                 example: 'Volkswagen'
@@ -1421,23 +1401,21 @@ components:
                 $ref: '#/components/schemas/formaPago'
               valorAdquisicion:
                 $ref: '#/components/schemas/monto'
-              fechaAdquisicion:     
+              fechaAdquisicion:
                 type: string
                 format: date
                 description: |-
                         Formato de fechas ISO 8601 con notación yyyy-mm-dd.
-                example: '2010-07-26' 
+                example: '2010-07-26'
               motivoBaja:
                 $ref: '#/components/schemas/motivoBaja'
         aclaracionesObservaciones:
-          type: string
-          description: 'Aclaraciones u observaciones pertinentes respecto de algunos de los incisos de este apartado'
-          example: 'Esta es una observación    '  
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     ## Sergio
     bienesMuebles:
       type: object
       properties:
-        ninguno: 
+        ninguno:
           $ref: '#/components/schemas/ninguno'
         bienMueble:
           type: array
@@ -1495,13 +1473,11 @@ components:
               motivoBaja:
                 $ref: '#/components/schemas/motivoBaja'
         aclaracionesObservaciones:
-          type: string
-          description: 'En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.'
-          example: 'Soy una observación o aclaración'
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     inversionesCuentasValores:
       type: object
       properties:
-        ninguno: 
+        ninguno:
           $ref: '#/components/schemas/ninguno'
         inversion:
           type: array
@@ -1510,7 +1486,7 @@ components:
             properties:
               tipoOperacion:
                 $ref : '#/components/schemas/tipoOperacion'
-              tipoInversion: 
+              tipoInversion:
                   type: object
                   properties:
                     clave:
@@ -1532,7 +1508,7 @@ components:
                             * `SEGR` - SEGUROS
                             * `VBUR` - VALORES BURSÁTILES
                             * `AFOT` - AFORES Y OTROS
-                        example: BANC    
+                        example: BANC
                     valor:
                         type: string
                         enum:
@@ -1544,7 +1520,7 @@ components:
                         - VALORES BURSÁTILES
                         - AFORES Y OTROS
                         example: BANCARIA
-              subTipoInversion: 
+              subTipoInversion:
                 type: object
                 properties:
                   clave:
@@ -1585,33 +1561,33 @@ components:
                         * BANC - `CMAS` - CUENTA MAESTRA
                         * BANC - `CEJE` - CUENTA EJE
                         * BANC - `DPLA` - DEPÓSITO A PLAZOS
-                        
+
                         * FINV - `SOIN` - SOCIEDADES DE INVERSIÓN
                         * FINV - `IFEX` - INVERSIONES FINANCIERAS EN EL EXTRANJERO
-                        
+
                         * ORPM - `ACCI` - ACCIONES
                         * ORPM - `CSAH` - CAJAS DE AHORRO
-                        
+
                         * POMM - `CENT` - CENTENARIOS
                         * POMM - `DIVS` - DIVISAS
                         * POMM - `MONN` - MONEDA NACIONAL
                         * POMM - `ONZT` - ONZAS TROY
                         * POMM - `CRIP` - CRIPTOMONEDAS
-                        
+
                         * SEGR - `SSIN` - SEGURO DE SEPARACIÓN INDIVIDUALIZADO
                         * SEGR - `SEGI` - SEGURO DE INVERSIÓN
                         * SEGR - `SEGV` - SEGURO DE VIDA
-                        
+
                         * VBUR - `ADER` - ACCIONES Y DERIVADOS
                         * VBUR - `ABAN` - ACEPTACIONES BANCARIAS
                         * VBUR - `BGUB` - BONOS GUBERNAMENTALES
                         * VBUR - `PCOM` - PAPEL COMERCIAL
-                        
+
                         * AFOT - `AFOR` - AFORES
                         * AFOT - `FIDE` - FIDEICOMISOS
                         * AFOT - `CTES` - CERTIFICADOS DE LA TESORERÍA
                         * AFOT - `PFTE` - PRÉSTAMOS A FAVOR DE UN TERCERO
-                    example: CNOM    
+                    example: CNOM
                   valor:
                       type: string
                       enum:
@@ -1640,7 +1616,7 @@ components:
                       - AFORES
                       - FIDEICOMISOS
                       - CERTIFICADOS DE LA TESORERÍA
-                      - PRÉSTAMOS A FAVOR DE UN TERCERO 
+                      - PRÉSTAMOS A FAVOR DE UN TERCERO
                       example: 'CUENTA DE NÓMINA'
               titular:
                 $ref: '#/components/schemas/titularBien'
@@ -1667,13 +1643,11 @@ components:
               saldoSituacionActual:
                 $ref: '#/components/schemas/monto'
         aclaracionesObservaciones:
-          type: string
-          description: 'En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.'
-          example: Soy una observación
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     adeudosPasivos:
       type: object
       properties:
-        ninguno: 
+        ninguno:
           $ref: '#/components/schemas/ninguno'
         adeudo:
           type: array
@@ -1700,7 +1674,7 @@ components:
                     example: CAUT
                     description: |
                       Significado de Claves:
-                        * `CHIP` - CRÉDITO HIPOTECARIO 
+                        * `CHIP` - CRÉDITO HIPOTECARIO
                         * `CAUT` - CRÉDITO AUTOMOTRIZ
                         * `CPER` - CRÉDITO PERSONAL
                         * `TCRN` - TARJETA DE CRÉDITO BANCARIA
@@ -1744,13 +1718,11 @@ components:
                   pais:
                     $ref: '#/components/schemas/pais'
         aclaracionesObservaciones:
-          type: string
-          description: 'En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.'
-          example: Soy una observación
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     prestamoComodato:
       type: object
       properties:
-        ninguno: 
+        ninguno:
           $ref: '#/components/schemas/ninguno'
         prestamo:
           type: array
@@ -1815,20 +1787,18 @@ components:
                         example: ABC680524P76
                       relacionConTitular:
                         type: string
-                        description: 'Indicar que tipo de relación existe en entre el dueño del bien prestado y el Declarante.'
+                        description: 'Indicar que tipo de relación existe entre el dueño del bien prestado y el Declarante.'
                         example: Amigo
         aclaracionesObservaciones:
-          type: string
-          description: 'En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.'
-          example: Soy una aclaración u observación
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     participacion:
       type: object
       properties:
-        ninguno: 
+        ninguno:
           $ref: '#/components/schemas/ninguno'
         participacion:
           type: array
-          description: 'Señalar quien tiene participación en la empresa sociedad o asociación.'
+          description: 'Señalar quién tiene participación en la empresa sociedad o asociación.'
           items:
             type: object
             properties:
@@ -1852,7 +1822,7 @@ components:
                 example: 50
               tipoParticipacion:
                 $ref: '#/components/schemas/tipoParticipacion'
-              recibeRemuneracion: 
+              recibeRemuneracion:
                 type: boolean
                 example: true
               montoMensual:
@@ -1868,15 +1838,13 @@ components:
               sector:
                 $ref: '#/components/schemas/sector'
         aclaracionesObservaciones:
-          type: string
-          description: 'En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.'
-          example: Soy una observación o aclaración
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     #Fenito
     participacionTomaDecisiones:
       description: "El Declarante deberá señalar si tiene o no participación en empresas, sociedades o asociaciones, tales como socio, accionista, comisario, representante, apoderado, colaborador, beneficiario u otro, especifique. Deberá reportar hasta los últimos dos años."
       type: object
       properties:
-        ninguno: 
+        ninguno:
           $ref: '#/components/schemas/ninguno'
         participacion:
           type: array
@@ -1903,7 +1871,7 @@ components:
                       Significado de Claves:
                         * `OSC` - ORGANIZACIONES DE LA SOCIEDAD CIVIL
                         * `OB` - ORGANIZACIONES BENÉFICAS
-                        * `PP` - PARTIDOS POLITICOS
+                        * `PP` - PARTIDOS POLÍTICOS
                         * `GS` - GREMIOS/SINDICATOS
                         * `OTRO` - OTRO (ESPECIFIQUE)
                     example: "OSC"
@@ -1913,7 +1881,7 @@ components:
               nombreInstitucion:
                 description: "Nombre de la institución. Proporcionar la denominación o razón social de la institución, tal y como se encuentra registrada formalmente."
                 type: string
-                example: "Institucion"
+                example: "Institución"
               rfc:
                 description: "RFC. Proporcionar los 12 dígitos del registro de la institución."
                 type: string
@@ -1925,7 +1893,7 @@ components:
                 type: string
                 example: "rol"
               fechaInicioParticipacion:
-                description: "Fecha de inicio de participación dentro de la institución. Señalar la fecha en que inicio funciones en la institución u organización."
+                description: "Fecha de inicio de participación dentro de la institución. Señalar la fecha en que inició funciones en la institución u organización."
                 type: string
                 format: date
                 example: "2019-12-01"
@@ -1938,14 +1906,12 @@ components:
               ubicacion:
                 $ref: '#/components/schemas/ubicacion'
         aclaracionesObservaciones:
-          type: string
-          description: "Aclaraciones/observaciones. En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado."
-          example: "esto es una aclaración"
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     apoyos:
       description: "Es la contribución monetaria o en especie que otorga un Ente Público al Declarante, cónyuge o Pareja y/o dependiente económico. El apoyo en especie refiere a cualquier contribución, utilizando bienes, servicios o beneficios de naturaleza diferente al dinero. Deberá reportar hasta los últimos dos años."
       type: object
       properties:
-        ninguno: 
+        ninguno:
           $ref: '#/components/schemas/ninguno'
         apoyo:
           type: array
@@ -1954,6 +1920,8 @@ components:
             properties:
               tipoOperacion:
                 $ref: '#/components/schemas/tipoOperacion'
+              tipoPersona:
+                $ref: '#/components/schemas/tipoPersona'
               beneficiarioPrograma:
                 $ref: '#/components/schemas/beneficiariosPrograma'
               nombrePrograma:
@@ -1963,7 +1931,7 @@ components:
               institucionOtorgante:
                 description: "Institución que otorga el apoyo. Señalar el nombre de la institución que le esté dando el apoyo."
                 type: string
-                example: "Institucion que otorga el apoyo"
+                example: "Institución que otorga el apoyo"
               nivelOrdenGobierno:
                 $ref: '#/components/schemas/nivelOrdenGobierno'
               tipoApoyo:
@@ -1994,22 +1962,20 @@ components:
               especifiqueApoyo:
                 description: "Especifique el apoyo. En caso de haber seleccionado en especie deberá describir en qué consiste el apoyo o beneficio."
                 type: string
-                example: "informacion del apoyo"
+                example: "información del apoyo"
         aclaracionesObservaciones:
-          type: string
-          description: "Aclaraciones/observaciones. En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado."
-          example: "esto es una aclaración"
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     representaciones:
       description: "Es cuando el Declarante actúa a nombre de otra persona física o moral (representante) o cuando una persona actúa a nombre del Declarante (representado). Deberá reportar hasta los últimos dos años."
       type: object
       properties:
-        ninguno: 
+        ninguno:
           $ref: '#/components/schemas/ninguno'
         representacion:
           type: array
           items:
             type: object
-            properties:  
+            properties:
               tipoOperacion:
                 $ref: '#/components/schemas/tipoOperacion'
               tipoRelacion:
@@ -2047,14 +2013,12 @@ components:
               sector:
                 $ref: '#/components/schemas/sector'
         aclaracionesObservaciones:
-          type: string
-          description: "Aclaraciones/observaciones. En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado."
-          example: "esto es una aclaración"
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     clientesPrincipales:
       description: "En caso de tener alguna empresa, negocio o actividad lucrativa deberá señalar a sus clientes principales, siempre y cuando el beneficio o ganancia directa al Declarante supere mensualmente 250 Unidades de Medida y Actualización (UMA), refiriéndose al valor diario de ésta. Deberá reportar hasta los últimos dos años."
       type: object
       properties:
-        ninguno: 
+        ninguno:
           $ref: '#/components/schemas/ninguno'
         cliente:
           type: array
@@ -2099,22 +2063,22 @@ components:
               ubicacion:
                 $ref: '#/components/schemas/ubicacion'
         aclaracionesObservaciones:
-          type: string
-          description: "Aclaraciones/observaciones. En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado."
-          example: "esto es una aclaración"
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     beneficiosPrivados:
       description: "Es la contribución monetaria o en especie que otorga una persona física o moral con recursos privados al Declarante o alguna de las personas señaladas en el catálogo. El apoyo en especie refiere a cualquier contribución, utilizando bienes o beneficios de naturaleza diferente al dinero. Deberá reportar hasta los últimos dos años."
       type: object
-      properties: 
-        ninguno: 
+      properties:
+        ninguno:
           $ref: '#/components/schemas/ninguno'
         beneficio:
           type: array
-          items: 
+          items:
             type: object
-            properties: 
+            properties:
               tipoOperacion:
                 $ref: '#/components/schemas/tipoOperacion'
+              tipoPersona:
+                $ref: '#/components/schemas/tipoPersona'
               tipoBeneficio:
                 description: "Tipo de Beneficio. Seleccionar del listado el tipo de beneficio sorteo, concurso, donación u otro (especifique)."
                 type: object
@@ -2148,7 +2112,7 @@ components:
                   nombreRazonSocial:
                     description: "Nombre o razón social del otorgante. Proporcionar el nombre o razón social completos de quien otorga el beneficio."
                     type: string
-                    example: "Colorantes marioposa SA de CV"
+                    example: "Colorantes mariposa SA de CV"
                   rfc:
                     description: "RFC. En caso de personas físicas proporcionar los trece dígitos. En caso de personas morales establecer los doce dígitos del otorgante del beneficio."
                     type: string
@@ -2157,26 +2121,23 @@ components:
                 $ref: '#/components/schemas/formaRecepcion'
               especifiqueBeneficio:
                 type: string
-                description: "Especifique el beneficio. En caso de haber seleccionado en especie deberá describir en que consiste el beneficio."
+                description: "Especifique el beneficio. En caso de haber seleccionado en especie deberá describir en qué consiste el beneficio."
                 example: "especifique el beneficio"
               montoMensualAproximado:
                 $ref: '#/components/schemas/monto'
               sector:
                 $ref: '#/components/schemas/sector'
-          
         aclaracionesObservaciones:
-          type: string
-          description: "Aclaraciones/observaciones. En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado."
-          example: "esto es una aclaración"
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     fideicomisos:
       description: "Este apartado solo lo llenaran las personas servidoras públicas que tengan participación en un fideicomiso, ya sea en el carácter de fideicomitente, fiduciario, fideicomisario o dentro del consejo técnico. Deberá reportar hasta los últimos dos años."
       type: object
       properties:
-        ninguno: 
+        ninguno:
           $ref: '#/components/schemas/ninguno'
         fideicomiso:
           type: array
-          items: 
+          items:
             type: object
             properties:
               tipoOperacion:
@@ -2240,7 +2201,7 @@ components:
                   rfc:
                     type: string
                     description: "RFC. En caso de personas físicas proporcionar los trece dígitos. En caso de personas morales establecer los doce dígitos del fideicomisario."
-                    example: "ERHG1548798" 
+                    example: "ERHG1548798"
               sector:
                 $ref: '#/components/schemas/sector'
               extranjero:
@@ -2251,9 +2212,7 @@ components:
                 description: "¿Dónde se localiza el fideicomiso? Seleccionar en México o en el extranjero."
                 example: 'MX'
         aclaracionesObservaciones:
-          type: string
-          description: "Aclaraciones/observaciones. En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado."
-          example: "esto es una aclaración"
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     # Esquemas en común
     domicilioMexico:
       type: object
@@ -2275,11 +2234,12 @@ components:
           properties:
             clave:
               type: string
-              description: 'cve_agem del Marco Geoestadistico de INEGI'
-              example: '0001'
+              description: 'cve_agem del Marco Geoestadístico de INEGI'
+              example: '001'
+              pattern: '^\d{3}$'
             valor:
               type: string
-              description: 'nom_agem del Marco Geoestadistico de INEGI'
+              description: 'nom_agem del Marco Geoestadístico de INEGI'
               example: Benito Juarez
         entidadFederativa:
           $ref: '#/components/schemas/entidadFederativa'
@@ -2312,13 +2272,13 @@ components:
     tipoPersona:
       type: string
       description:  'Indica si es persona física o persona moral'
-      enum: 
+      enum:
         - FISICA
         - MORAL
       example: FISICA
     tipoMoneda:
       type: string
-      description: 'Codigo a 3 caracteres del ISO 4217'
+      description: 'Código a 3 caracteres del ISO 4217'
       example: "MXN"
     formaRecepcion:
       type: string
@@ -2340,12 +2300,13 @@ components:
       properties:
         clave:
           type: string
-          example: "001"
-          description: "cve_agee del Marco Geoestadistico de INEGI"
+          example: "01"
+          description: "cve_agee del Marco Geoestadístico de INEGI"
+          pattern: '^\d{2}$'
         valor:
           type: string
           example: "Aguascalientes"
-          description: "nom_agee del Marco Geoestadistico de INEGI"
+          description: "nom_agee del Marco Geoestadístico de INEGI"
     pais:
       type: string
       maxLength: 2
@@ -2357,7 +2318,7 @@ components:
         clave:
           type: string
           example: "DC"
-          enum: 
+          enum:
             - DC
             - CY
             - CON
@@ -2379,7 +2340,7 @@ components:
           description: |
             Significado de Claves:
               * `DC` - DECLARANTE
-              * `CY` - CONYUGE
+              * `CY` - CÓNYUGE
               * `CON` - CONCUBINA O CONCUBINARIO
               * `CONV` - CONVIVIENTE
               * `HIJ` - HIJO(A)
@@ -2405,7 +2366,7 @@ components:
         clave:
           type: string
           example: "AGRI"
-          enum: 
+          enum:
             - AGRI
             - MIN
             - EELECT
@@ -2452,7 +2413,7 @@ components:
           type: number
           example: 20000
           description: Valor sin centavos
-        moneda: 
+        moneda:
           $ref: '#/components/schemas/tipoMoneda'
     superficie:
       type: object
@@ -2466,8 +2427,8 @@ components:
       type: string
       default: m2
       enum:
-        - m2 
-        - ha 
+        - m2
+        - ha
         - km2
       description: |
         Significado de Claves:
@@ -2493,10 +2454,10 @@ components:
               * `FIN` - FONDOS DE INVERSIÓN
               * `OPR` - ORGANIZACIONES PRIVADA
               * `SSI` - SEGURO DE SEPARACIÓN INDIVIDUALIZADO
-              * `VBU` - VALORES BUSÁTILES
+              * `VBU` - VALORES BURSÁTILES
               * `BON` - BONOS
               * `OTRO` - OTRO(ESPECIFIQUE)
-          example: SSI    
+          example: SSI
         valor:
           type: string
           description: Valor del tipo de inversión
@@ -2558,6 +2519,9 @@ components:
                 - TIOA
                 - NIE
                 - NIN
+                - AHI
+                - NUE
+                - YER
                 - OTRO
               description: |
                 Significado de Claves:
@@ -2580,8 +2544,11 @@ components:
                   * `TIOA` - TIO(A)
                   * `NIE` - NIETO(A)
                   * `NIN` - NINGUNO
+                  * `AHI` - AHIJADO(A)
+                  * `NUE` - NUERA
+                  * `YER` - YERNO
                   * `OTRO` - OTRO(ESPECIFIQUE)
-              example: HER    
+              example: HER
             valor:
               type: string
               description: Valor del parentesco
@@ -2598,14 +2565,14 @@ components:
             - NIN
           description: |
             Significado de Claves:
-              * `PUB` - PUBLICO
+              * `PUB` - PÚBLICO
               * `PRI` - PRIVADO
               * `OTRO` - OTRO(ESPECIFIQUE)
               * `NIN` - NINGUNO
-          example: PUB    
+          example: PUB
         valor:
           type: string
-          example: PUBLICO
+          example: PÚBLICO
     formaAdquisicion:
       type: object
       properties:
@@ -2656,7 +2623,7 @@ components:
           example: VENTA
     tipoVehiculo:
       type: object
-      properties: 
+      properties:
         clave:
           type: string
           enum:
@@ -2670,10 +2637,10 @@ components:
               * `AERN` - AERONAVE
               * `BARYA` - BARCO/YATE
               * `OTRO` - OTROS (ESPECIFIQUE)
-          example: 'AUMOT'   
+          example: 'AUMOT'
         valor:
           type: string
-          description: Valor de la clave de tipo de vehículo 
+          description: Valor de la clave de tipo de vehículo
           example: AUTOMÓVIL/MOTOCICLETA
     titularBien:
       type: array
@@ -2692,7 +2659,7 @@ components:
             description: |
               Significado de Claves:
                 * `DEC` - DECLARANTE
-                * `CYG` - CONYUGE
+                * `CYG` - CÓNYUGE
                 * `CBN` - CONCUBINA O CONCUBINARIO
                 * `CVV` - CONVIVIENTE
                 * `DEN` - DEPENDIENTE ECONÓMICO
@@ -2709,7 +2676,7 @@ components:
         - FEDERAL
         - ESTATAL
         - MUNICIPAL_ALCALDIA
-      example: FEDERAL  
+      example: FEDERAL
     ambitoPublico:
       type: string
       description: Naturaleza jurídica al que pertenece
@@ -2765,17 +2732,17 @@ components:
           - OTR
         valor:
           type: string
-          description: Señalar si el empleo que reporta corresponde al sector público, privado u otro. En caso de señalar otro deberá especificar el sector en el que laboró.
+          description: Señalar si el empleo que reporta corresponde al sector público, privado u otro. En caso de señalar otro deberá especificar el sector en el que laboro.
           example: 'Público'
-    lugarDondeReside: 
+    lugarDondeReside:
       type: string
-      description: 'Indicar si vive en México, en el extranjero o si se desconoce.'
+      description: 'Indicar si vive en México, en el extranjero o si se desconoce.'
       enum:
       - MEXICO
       - EXTRANJERO
       - SE_DESCONOCE
       example: 'EXTRANJERO'
-    tipoOperacion: 
+    tipoOperacion:
       type: string
       description: 'Indicar si el elemento fue agregado, modificado, sin cambios o dado de baja'
       enum:
@@ -2808,7 +2775,7 @@ components:
             description: 'RFC'
             example: 'CYUW1234IK90'
           relacion:
-                $ref: '#/components/schemas/parentescoRelacion'  
+                $ref: '#/components/schemas/parentescoRelacion'
     tercero:
       type: array
       items:
@@ -2819,12 +2786,12 @@ components:
           nombreRazonSocial:
             type: string
             description: 'En caso de señalar copropiedad, escribir el nombre o nombres completos, así como apellidos completos sin abreviaturas y sin acentos ni signos especiales. Si se trata de persona moral deberá proporcionar la denominación o razón social de la institución tal y como se encuentra en el documento con el que se acredita la adquisición.'
-            example: 'Jesus López'
+            example: 'Jesús López'
           rfc:
             type: string
             description: 'En caso de personas físicas proporcionar los trece dígitos. En caso de personas morales establecer los doce dígitos.'
             example: 'ABC680524P76'
-    ninguno: 
+    ninguno:
       type: boolean
       description: "Indica que el declarante expresa no tener información relacionada"
       example: false
@@ -2835,6 +2802,10 @@ components:
         - CONTADO
         - NO APLICA
       example: CONTADO
+    aclaracionesObservaciones:
+      type: string
+      description: "Aclaraciones/observaciones. En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado."
+      example: 'Observaciones'
   
     dependencias:
       description: >-
