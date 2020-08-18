@@ -149,7 +149,7 @@ components:
                     example: '2017-07-21T17:32:28Z'
                   institucion:
                     type: string
-                    description: Institucion resposanble del sistema de captura
+                    description: Institucion responsable del sistema de captura
                     example: Secretaría de Educación Pública
                   tipo:
                     type: string
@@ -340,7 +340,7 @@ components:
                   example: "Director del Sistema Nacional de Infraestructura"
                 nivelOrdenGobierno:
                   type: string
-                  description: Codigo del nivel/orden de gobierno a buscar
+                  description: Código del nivel/orden de gobierno a buscar
                   enum:
                     - FEDERAL
                     - ESTATAL
@@ -362,11 +362,11 @@ components:
                   properties:
                       min:
                         type: integer
-                        description: "valor minimo de busqueda, si solo existe este dato se buscaran todos los datos igual o superior al valor"
+                        description: "valor mínimo de búsqueda, si solo existe este dato se buscaran todos los datos igual o superior al valor"
                         example: 2000
                       max:
                         type: integer
-                        description: "valor máximo de busqueda, si solo existe este dato se buscaran todos los datos igual o menor al valor"
+                        description: "valor máximo de búsqueda, si solo existe este dato se buscaran todos los datos igual o menor al valor"
                         example: 4000
                 superficieTerreno:
                   type: object
@@ -377,11 +377,11 @@ components:
                   properties:
                       min:
                         type: integer
-                        description: "valor minimo de busqueda, si solo existe este dato se buscaran todos los datos igual o superior al valor"
+                        description: "valor mínimo de búsqueda, si solo existe este dato se buscaran todos los datos igual o superior al valor"
                         example: 2000
                       max:
                         type: integer
-                        description: "valor máximo de busqueda, si solo existe este dato se buscaran todos los datos igual o menor al valor"
+                        description: "valor máximo de búsqueda, si solo existe este dato se buscaran todos los datos igual o menor al valor"
                         example: 4000
                 formaAdquisicion:
                   type: string
@@ -401,7 +401,7 @@ components:
                   properties:
                       min:
                         type: integer
-                        description: "valor minimo de busqueda, si solo existe este dato se buscaran todos los datos igual o superior al valor"
+                        description: "valor mínimo de búsqueda, si solo existe este dato se buscaran todos los datos igual o superior al valor"
                         example: 2000
                       max:
                         type: integer
@@ -413,11 +413,11 @@ components:
               properties:
                       min:
                         type: integer
-                        description: "valor minimo de busqueda, si solo existe este dato se buscaran todos los datos igual o superior al valor"
+                        description: "valor mínimo de búsqueda, si solo existe este dato se buscaran todos los datos igual o superior al valor"
                         example: 2000
                       max:
                         type: integer
-                        description: "valor máximo de busqueda, si solo existe este dato se buscaran todos los datos igual o menor al valor"
+                        description: "valor máximo de búsqueda, si solo existe este dato se buscaran todos los datos igual o menor al valor"
                         example: 4000
             rfcSolicitante:
               type: string
@@ -559,9 +559,7 @@ components:
           nacionalidad:
             $ref: '#/components/schemas/pais'
           aclaracionesObservaciones:
-            type: string
-            description: En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.
-            example: 'Observaciones'
+            $ref: '#/components/schemas/aclaracionesObservaciones'
     domicilioDeclarante:
         type: object
         properties:
@@ -570,9 +568,7 @@ components:
           domicilioExtranjero:
             $ref: '#/components/schemas/domicilioExtranjero'
           aclaracionesObservaciones:
-            type: string
-            description:  En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.
-            example: 'Observaciones'
+            $ref: '#/components/schemas/aclaracionesObservaciones'
     datosCurricularesDeclarante:
         type: object
         required: 
@@ -662,9 +658,7 @@ components:
                   description: Señalar la fecha que indica el documento obtenido.
                   example: '2017-11-29'
           aclaracionesObservaciones: 
-            type: string
-            description: En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.
-            example: 'Observaciones'
+            $ref: '#/components/schemas/aclaracionesObservaciones'
     datosEmpleoCargoComision:
       type: object
       required: 
@@ -721,9 +715,7 @@ components:
         domicilioExtranjero:
           $ref: '#/components/schemas/domicilioExtranjero'
         aclaracionesObservaciones:
-          type: string
-          description: En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.
-          example: 'Observaciones'
+          $ref: '#/components/schemas/aclaracionesObservaciones'
         cuentaConOtroCargoPublico:
           type: boolean
           description: ¿Cuenta con otro empleo, cargo, comisión en el servicio público distingo al declarado?
@@ -826,9 +818,7 @@ components:
                       example: 'MX'
                       description: Señalar si se ubica en México o en el extranjero
           aclaracionesObservaciones:
-            type: string
-            description: En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.
-            example: 'Observaciones'
+            $ref: '#/components/schemas/aclaracionesObservaciones'
     datosPareja:
         type: object
         properties:
@@ -948,9 +938,7 @@ components:
                 description: Señalar sí o no, la Pareja vende o presta algún servicio al gobierno.
                 example: true
           aclaracionesObservaciones:
-            type: string
-            description: En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.
-            example: 'Observaciones'
+            $ref: '#/components/schemas/aclaracionesObservaciones'
     #FIN Mario
     ##ISELA
     datosDependientesEconomicos:
@@ -1091,9 +1079,7 @@ components:
               sector:
                 $ref: '#/components/schemas/sector'   
         aclaracionesObservaciones:
-          type: string
-          description: 'Aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.'
-          example: 'Esta es una aclaración'
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     ingresos:
       type: object
       required: 
@@ -1199,9 +1185,7 @@ components:
         totalIngresosAnualesNetos:    
           $ref: '#/components/schemas/monto'    
         aclaracionesObservaciones:
-          type: string
-          description: 'Aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.'
-          example: 'Esta es una aclaración'
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     bienesInmuebles:
       description: |-
         Reportar aquellos bienes que conforme a la normatividad aplicable se consideran inmuebles.
@@ -1266,9 +1250,7 @@ components:
               motivoBaja:
                 $ref: '#/components/schemas/motivoBaja'
         aclaracionesObservaciones:
-          type: string
-          description: 'Aclaraciones u observaciones que se consideren pertinentes'
-          example: 'Esta es una aclaración'     
+          $ref: '#/components/schemas/aclaracionesObservaciones'     
     vehiculos:
       description: |- 
         Situación de los vehículos a la fecha de ingreso al empleo, cargo o comisión.
@@ -1330,9 +1312,7 @@ components:
               motivoBaja:
                 $ref: '#/components/schemas/motivoBaja'
         aclaracionesObservaciones:
-          type: string
-          description: 'Aclaraciones u observaciones pertinentes respecto de algunos de los incisos de este apartado'
-          example: 'Esta es una observación    '  
+          $ref: '#/components/schemas/aclaracionesObservaciones'  
     ## Sergio
     bienesMuebles:
       type: object
@@ -1395,9 +1375,7 @@ components:
               motivoBaja:
                 $ref: '#/components/schemas/motivoBaja'
         aclaracionesObservaciones:
-          type: string
-          description: 'En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.'
-          example: 'Soy una observación o aclaración'
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     inversionesCuentasValores:
       type: object
       properties:
@@ -1566,10 +1544,14 @@ components:
                     example: ABC680524P76
               saldoDiciembreAnterior:
                 $ref: '#/components/schemas/monto'
+              porcentajeIncrementoDecremento:
+                type: number
+                description: 'porcentaje de incremento(+) o decremento(-) del saldo'
+                example: -80
+                minimum: -100
+                maximum: 100
         aclaracionesObservaciones:
-          type: string
-          description: 'En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.'
-          example: Soy una observación
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     adeudosPasivos:
       type: object
       properties:
@@ -1622,6 +1604,12 @@ components:
                 $ref: '#/components/schemas/monto'
               saldoInsolutoDiciembreAnterior:
                 $ref: '#/components/schemas/monto'
+              porcentajeIncrementoDecremento:
+                type: number
+                description: 'porcentaje de incremento(+) o decremento(-) del saldo'
+                example: 80
+                minimum: -100
+                maximum: 100
               tercero:
                 $ref: '#/components/schemas/tercero'
               otorganteCredito:
@@ -1644,9 +1632,7 @@ components:
                   pais:
                     $ref: '#/components/schemas/pais'
         aclaracionesObservaciones:
-          type: string
-          description: 'En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.'
-          example: Soy una observación
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     prestamoComodato:
       type: object
       properties:
@@ -1718,9 +1704,7 @@ components:
                         description: 'Indicar que tipo de relación existe en entre el dueño del bien prestado y el Declarante.'
                         example: Amigo
         aclaracionesObservaciones:
-          type: string
-          description: 'En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.'
-          example: Soy una aclaración u observación
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     participacion:
       type: object
       properties:
@@ -1768,9 +1752,7 @@ components:
               sector:
                 $ref: '#/components/schemas/sector'
         aclaracionesObservaciones:
-          type: string
-          description: 'En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.'
-          example: Soy una observación o aclaración
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     #Fenito
     participacionTomaDecisiones:
       description: "El Declarante deberá señalar si tiene o no participación en empresas, sociedades o asociaciones, tales como socio, accionista, comisario, representante, apoderado, colaborador, beneficiario u otro, especifique. Deberá reportar hasta los últimos dos años."
@@ -1838,9 +1820,7 @@ components:
               ubicacion:
                 $ref: '#/components/schemas/ubicacion'
         aclaracionesObservaciones:
-          type: string
-          description: "Aclaraciones/observaciones. En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado."
-          example: "esto es una aclaración"
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     apoyos:
       description: "Es la contribución monetaria o en especie que otorga un Ente Público al Declarante, cónyuge o Pareja y/o dependiente económico. El apoyo en especie refiere a cualquier contribución, utilizando bienes, servicios o beneficios de naturaleza diferente al dinero. Deberá reportar hasta los últimos dos años."
       type: object
@@ -1854,6 +1834,8 @@ components:
             properties:
               tipoOperacion:
                 $ref: '#/components/schemas/tipoOperacion'
+              tipoPersona:
+                $ref: '#/components/schemas/tipoPersona'
               beneficiarioPrograma:
                 $ref: '#/components/schemas/beneficiariosPrograma'
               nombrePrograma:
@@ -1896,9 +1878,7 @@ components:
                 type: string
                 example: "informacion del apoyo"
         aclaracionesObservaciones:
-          type: string
-          description: "Aclaraciones/observaciones. En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado."
-          example: "esto es una aclaración"
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     representaciones:
       description: "Es cuando el Declarante actúa a nombre de otra persona física o moral (representante) o cuando una persona actúa a nombre del Declarante (representado). Deberá reportar hasta los últimos dos años."
       type: object
@@ -1947,9 +1927,7 @@ components:
               sector:
                 $ref: '#/components/schemas/sector'
         aclaracionesObservaciones:
-          type: string
-          description: "Aclaraciones/observaciones. En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado."
-          example: "esto es una aclaración"
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     clientesPrincipales:
       description: "En caso de tener alguna empresa, negocio o actividad lucrativa deberá señalar a sus clientes principales, siempre y cuando el beneficio o ganancia directa al Declarante supere mensualmente 250 Unidades de Medida y Actualización (UMA), refiriéndose al valor diario de ésta. Deberá reportar hasta los últimos dos años."
       type: object
@@ -1999,9 +1977,7 @@ components:
               ubicacion:
                 $ref: '#/components/schemas/ubicacion'
         aclaracionesObservaciones:
-          type: string
-          description: "Aclaraciones/observaciones. En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado."
-          example: "esto es una aclaración"
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     beneficiosPrivados:
       description: "Es la contribución monetaria o en especie que otorga una persona física o moral con recursos privados al Declarante o alguna de las personas señaladas en el catálogo. El apoyo en especie refiere a cualquier contribución, utilizando bienes o beneficios de naturaleza diferente al dinero. Deberá reportar hasta los últimos dos años."
       type: object
@@ -2015,6 +1991,8 @@ components:
             properties: 
               tipoOperacion:
                 $ref: '#/components/schemas/tipoOperacion'
+              tipoPersona:
+                $ref: '#/components/schemas/tipoPersona'
               tipoBeneficio:
                 description: "Tipo de Beneficio. Seleccionar del listado el tipo de beneficio sorteo, concurso, donación u otro (especifique)."
                 type: object
@@ -2065,9 +2043,7 @@ components:
                 $ref: '#/components/schemas/sector'
           
         aclaracionesObservaciones:
-          type: string
-          description: "Aclaraciones/observaciones. En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado."
-          example: "esto es una aclaración"
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     fideicomisos:
       description: "Este apartado solo lo llenaran las personas servidoras públicas que tengan participación en un fideicomiso, ya sea en el carácter de fideicomitente, fiduciario, fideicomisario o dentro del consejo técnico. Deberá reportar hasta los últimos dos años."
       type: object
@@ -2151,9 +2127,7 @@ components:
                 description: "¿Dónde se localiza el fideicomiso? Seleccionar en México o en el extranjero."
                 example: 'MX'
         aclaracionesObservaciones:
-          type: string
-          description: "Aclaraciones/observaciones. En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado."
-          example: "esto es una aclaración"
+          $ref: '#/components/schemas/aclaracionesObservaciones'
     # Esquemas en común
     domicilioMexico:
       type: object
@@ -2177,6 +2151,7 @@ components:
               type: string
               description: 'cve_agem del Marco Geoestadistico de INEGI'
               example: '0001'
+              pattern: '^\d{3}$'
             valor:
               type: string
               description: 'nom_agem del Marco Geoestadistico de INEGI'
@@ -2242,6 +2217,7 @@ components:
           type: string
           example: "001"
           description: "cve_agee del Marco Geoestadistico de INEGI"
+          pattern: '^\d{2}$'
         valor:
           type: string
           example: "Aguascalientes"
@@ -2458,6 +2434,9 @@ components:
                 - TIOA
                 - NIE
                 - NIN
+                - AHI
+                - NUE
+                - YER
                 - OTRO
               description: |
                 Significado de Claves:
@@ -2480,6 +2459,9 @@ components:
                   * `TIOA` - TIO(A)
                   * `NIE` - NIETO(A)
                   * `NIN` - NINGUNO
+                  * `AHI` - AHIJADO(A)
+                  * `NUE` - NUERA
+                  * `YER` - YERNO
                   * `OTRO` - OTRO(ESPECIFIQUE)
               example: HER    
             valor:
@@ -2788,10 +2770,13 @@ components:
           domicilioExtranjero:
             $ref: '#/components/schemas/domicilioExtranjero'
           aclaracionesObservaciones:
-            type: string
-            description: En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado.
-            example: 'Observaciones'
-  
+            $ref: '#/components/schemas/aclaracionesObservaciones'
+    
+    aclaracionesObservaciones:
+      type: string
+      description: "Aclaraciones/observaciones. En este espacio el Declarante podrá realizar las aclaraciones u observaciones que considere pertinentes respecto de alguno o algunos de los incisos de este apartado."
+      example: 'Observaciones'
+
     dependencias:
       description: >-
         Instituciones o dependencias de los declarantes
