@@ -93,38 +93,11 @@ components:
     resSpic:
       type: object
       required:
-        - pagination
         - results
       properties:
-        pagination:
-          type: object
-          required:
-            - pageSize
-            - page
-            - totalRows
-            - hasNextPage
-          properties:
-            pageSize:
-              type: integer
-              minimum: 1
-              description: 'Número de registros mostrados, por defecto muestra diez.'
-              example: 100
-            page:
-              type: integer
-              minimum: 1
-              description: Número de página actual
-              example: 20
-            totalRows:
-              type: integer
-              minimum: 1
-              description: Total de registros
-              example: 30
-            hasNextPage:
-              type: boolean
-              description: Indica si existe otra página
-              example: true  
         results:
           $ref: '#/components/schemas/respSpic'
+    
     reqSpic:
       type: object
       properties:
