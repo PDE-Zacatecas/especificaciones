@@ -80,8 +80,8 @@ paths:
         - declaraciones_auth: []
 
 externalDocs:
-  description: Más información del estandar nacional
-  url: 'https://github.com/PDNMX/api_docs'
+  description: Más información del estándar estatal
+  url: 'https://github.com/PDE-Zacatecas/especificaciones'
 components:
   securitySchemes:
     declaraciones_auth:
