@@ -78,7 +78,7 @@ paths:
       security:
         - declaraciones_auth: []
 externalDocs:
-  description: Más información de las especificaciones nacionales
+  description: Más información de las especificaciones estatales
   url: 'https://github.com/PDE-Zacatecas/especificaciones'
 components:
   securitySchemes:
