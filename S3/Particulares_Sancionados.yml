@@ -71,8 +71,8 @@ paths:
       security:
         - psancionados_auth: []
 externalDocs:
-  description: Más información
-  url: 'https://github.com/PDNMX/api_docs'
+  description: Más información del estándar estatal
+  url: 'https://github.com/PDE-Zacatecas/especificaciones'
 components:
   securitySchemes:
     psancionados_auth:
