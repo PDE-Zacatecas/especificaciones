@@ -79,7 +79,7 @@ paths:
         - declaraciones_auth: []
 externalDocs:
   description: Más información de las especificaciones nacionales
-  url: 'https://github.com/PDNMX/api_docs'
+  url: 'https://github.com/PDE-Zacatecas/especificaciones'
 components:
   securitySchemes:
     declaraciones_auth:
